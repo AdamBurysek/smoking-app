@@ -17,6 +17,6 @@ export default {
     tabIconSelected: tintColorDark,
   },
   primary: "#FF385C",
-  grey: "#5E5D5E",
+  grey: "#525252",
   darks: "#1A1A1A",
 };

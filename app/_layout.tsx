@@ -41,6 +41,9 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
+    "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
+    "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -58,15 +61,6 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
-  // const router = useRouter();
-  // const { isLoaded, isSignedIn } = useAuth();
-
-  // useEffect(() => {
-  //   if (isLoaded && !isSignedIn) {
-  //     router.push("/(modals)/profile");
-  //   }
-  // }, [isLoaded]);
 
   return (
     <ClerkProvider
@@ -88,8 +82,13 @@ function RootLayoutNav() {
       router.push("/(modals)/login");
     }
   }, [isLoaded]);
+
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        contentStyle: { backgroundColor: "white" },
+      }}
+    >
       <Stack.Screen
         name="(tabs)"
         options={{

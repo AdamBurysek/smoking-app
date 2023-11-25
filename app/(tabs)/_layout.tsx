@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
 import Colors from "../../constants/Colors";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { View } from "react-native";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -16,8 +17,19 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.light.tint,
-        tabBarLabelStyle: { fontSize: 16 },
+        tabBarActiveTintColor: "white",
+        tabBarLabelStyle: {
+          fontFamily: "Roboto-Medium",
+          fontSize: 18,
+          paddingBottom: 15,
+        },
+        tabBarActiveBackgroundColor: Colors.grey,
+        tabBarStyle: {
+          marginBottom: 40,
+          marginLeft: 50,
+          marginRight: 50,
+        },
+        tabBarIcon: () => null,
       }}
     >
       <Tabs.Screen
@@ -25,9 +37,6 @@ export default function TabLayout() {
         options={{
           title: "Overview",
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cigar" size={25} color={color} />
-          ),
         }}
       />
       <Tabs.Screen
@@ -35,9 +44,6 @@ export default function TabLayout() {
         options={{
           title: "History & Stats",
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="stats-chart" size={25} color={color} />
-          ),
         }}
       />
     </Tabs>
