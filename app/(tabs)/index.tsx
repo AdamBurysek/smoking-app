@@ -2,8 +2,11 @@ import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useState } from "react";
 
 export default function TabOneScreen() {
+  const [cigarettes, setCigarettes] = useState<number>(0);
+
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -13,7 +16,7 @@ export default function TabOneScreen() {
 
       <Text style={styles.today}>Today</Text>
       <View style={styles.counterBox}>
-        <Text style={styles.cigaretteCount}>5</Text>
+        <Text style={styles.cigaretteCount}>{cigarettes}</Text>
         <Text style={styles.cigaretteCountText}>Cigarettes</Text>
       </View>
       <View style={styles.statsContainer}>
@@ -29,7 +32,10 @@ export default function TabOneScreen() {
         </View>
       </View>
       <View style={styles.plusBtnContainer}>
-        <TouchableOpacity style={styles.plusBtn}>
+        <TouchableOpacity
+          style={styles.plusBtn}
+          onPress={() => setCigarettes(cigarettes + 1)}
+        >
           <FontAwesome
             name="plus"
             size={40}

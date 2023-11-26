@@ -2,10 +2,11 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { Link, SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
+import { Image, Pressable } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
 import Colors from "../constants/Colors";
+import { useColorScheme } from "react-native";
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -91,6 +92,8 @@ function RootLayoutNav() {
     }
   }, [isSignedIn]);
 
+  const isDarkMode = useColorScheme() === "dark";
+
   return (
     <Stack
       screenOptions={{
@@ -111,17 +114,22 @@ function RootLayoutNav() {
             fontSize: 20,
           },
           headerTransparent: true,
-          // headerStyle: { backgroundColor: Colors.grey },
+          headerStyle: {
+            backgroundColor: isDarkMode ? Colors.grey : undefined,
+          },
           headerRight: () => (
             <Link href="/(modals)/profile" asChild>
-              <Pressable>
+              <Pressable style={{ marginBottom: 5 }}>
                 <Image
                   source={{ uri: user?.imageUrl }}
                   style={{
                     width: 40,
                     height: 40,
                     borderRadius: 50,
-                    // bottom: 5,
+                    borderWidth: 1,
+                    marginEnd: 14,
+
+                    borderColor: "grey",
                   }}
                 ></Image>
               </Pressable>
