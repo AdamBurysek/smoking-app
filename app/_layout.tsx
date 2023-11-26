@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
+import Colors from "../constants/Colors";
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -87,19 +88,30 @@ function RootLayoutNav() {
     <Stack
       screenOptions={{
         contentStyle: { backgroundColor: "white" },
+        headerTintColor: "white",
       }}
     >
       <Stack.Screen
         name="(tabs)"
         options={{
           title: "",
+          headerTitleStyle: {
+            fontFamily: "Roboto-Bold",
+            fontSize: 20,
+          },
           headerTransparent: true,
+          // headerStyle: { backgroundColor: Colors.grey },
           headerRight: () => (
             <Link href="/(modals)/profile" asChild>
               <Pressable>
                 <Image
                   source={{ uri: user?.imageUrl }}
-                  style={{ width: 40, height: 40, borderRadius: 50 }}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 50,
+                    // bottom: 5,
+                  }}
                 ></Image>
               </Pressable>
             </Link>

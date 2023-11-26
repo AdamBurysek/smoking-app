@@ -18,6 +18,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "black",
         tabBarLabelStyle: {
           fontFamily: "Roboto-Medium",
           fontSize: 18,
@@ -25,9 +26,10 @@ export default function TabLayout() {
         },
         tabBarActiveBackgroundColor: Colors.grey,
         tabBarStyle: {
-          marginBottom: 40,
-          marginLeft: 50,
-          marginRight: 50,
+          // marginBottom: 20,
+          // paddingBottom: 10,
+          // marginLeft: 50,
+          // marginRight: 50,
         },
         tabBarIcon: () => null,
       }}
