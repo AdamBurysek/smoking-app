@@ -7,8 +7,8 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <Text style={styles.title}>Last Cigarette at 12:34</Text>
-        <Text style={styles.title}>45min. ago</Text>
+        <Text style={styles.lastCigarette}>Last Cigarette at 12:34</Text>
+        <Text style={styles.lastCigaretteTime}>45min. ago</Text>
       </View>
 
       <Text style={styles.today}>Today</Text>
@@ -16,25 +16,27 @@ export default function TabOneScreen() {
         <Text style={styles.cigaretteCount}>5</Text>
         <Text style={styles.cigaretteCountText}>Cigarettes</Text>
       </View>
-      <View>
+      <View style={styles.statsContainer}>
         <View>
-          <Text>Yesterday</Text>
-          <Text>21</Text>
-          <Text>every ~32min.</Text>
+          <Text style={styles.statsDay}>Yesterday</Text>
+          <Text style={styles.statsYesterdayNumber}>21</Text>
+          <Text style={styles.statsTime}>every ~32min.</Text>
         </View>
         <View>
-          <Text>Left for today</Text>
-          <Text>10</Text>
-          <Text>every ~42min.</Text>
+          <Text style={styles.statsDay}>Left for today</Text>
+          <Text style={styles.statsTodayNumber}>10</Text>
+          <Text style={styles.statsTime}>every ~42min.</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.plusBtn}>
-        <FontAwesome
-          name="plus"
-          size={40}
-          style={styles.plusBtnIcon}
-        ></FontAwesome>
-      </TouchableOpacity>
+      <View style={styles.plusBtnContainer}>
+        <TouchableOpacity style={styles.plusBtn}>
+          <FontAwesome
+            name="plus"
+            size={40}
+            style={styles.plusBtnIcon}
+          ></FontAwesome>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -86,14 +88,43 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontFamily: "Roboto-Medium",
   },
+  plusBtnContainer: {
+    marginBottom: 40,
+  },
   plusBtn: {
     backgroundColor: Colors.grey,
     paddingVertical: 14,
-    marginBottom: 40,
+
     borderRadius: 10,
   },
   plusBtnIcon: {
     color: Colors.green,
     paddingHorizontal: 150,
   },
+  lastCigarette: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 24,
+  },
+  lastCigaretteTime: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 18,
+    color: Colors.grey,
+  },
+  statsContainer: {
+    width: "70%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  statsDay: { fontFamily: "Roboto-Medium", fontSize: 18 },
+  statsYesterdayNumber: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 24,
+    color: "red",
+  },
+  statsTodayNumber: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 24,
+    color: Colors.green,
+  },
+  statsTime: { fontFamily: "Roboto-Medium", fontSize: 18, color: Colors.grey },
 });

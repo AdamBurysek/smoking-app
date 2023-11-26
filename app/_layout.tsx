@@ -79,10 +79,17 @@ function RootLayoutNav() {
   const { user } = useUser();
 
   useEffect(() => {
-    if (isLoaded && !isSignedIn) {
+    if (!isLoaded && !isSignedIn) {
+      router.push("/(modals)/introScreen");
+    }
+
+    if (!isSignedIn && isLoaded) {
       router.push("/(modals)/login");
     }
-  }, [isLoaded]);
+    if (isSignedIn) {
+      router.push("/(tabs)");
+    }
+  }, [isSignedIn]);
 
   return (
     <Stack
@@ -91,6 +98,10 @@ function RootLayoutNav() {
         headerTintColor: "white",
       }}
     >
+      <Stack.Screen
+        name="(modals)/introScreen"
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="(tabs)"
         options={{
