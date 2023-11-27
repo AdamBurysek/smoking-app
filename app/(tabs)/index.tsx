@@ -1,11 +1,17 @@
 import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
+import * as Haptics from "expo-haptics";
 
 export default function TabOneScreen() {
   const [cigarettes, setCigarettes] = useState<number>(0);
+
+  const handlePlusButtonClick = () => {
+    setCigarettes(cigarettes + 1);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  };
 
   return (
     <View style={styles.container}>
@@ -34,7 +40,7 @@ export default function TabOneScreen() {
       <View style={styles.plusBtnContainer}>
         <TouchableOpacity
           style={styles.plusBtn}
-          onPress={() => setCigarettes(cigarettes + 1)}
+          onPress={handlePlusButtonClick}
         >
           <FontAwesome
             name="plus"
@@ -118,7 +124,7 @@ const styles = StyleSheet.create({
     color: Colors.grey,
   },
   statsContainer: {
-    width: "70%",
+    width: "83%",
     flexDirection: "row",
     justifyContent: "space-between",
   },
