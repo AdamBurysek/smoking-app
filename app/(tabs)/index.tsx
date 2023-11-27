@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 300,
     display: "flex",
     justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
   },
   cigaretteCount: {
