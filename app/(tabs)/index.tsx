@@ -1,9 +1,11 @@
 import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
 import * as Haptics from "expo-haptics";
+
+const STATUS_BAR_HEIGHT = StatusBar.currentHeight;
 
 export default function TabOneScreen() {
   const [cigarettes, setCigarettes] = useState<number>(0);
@@ -42,11 +44,7 @@ export default function TabOneScreen() {
           style={styles.plusBtn}
           onPress={handlePlusButtonClick}
         >
-          <FontAwesome
-            name="plus"
-            size={40}
-            style={styles.plusBtnIcon}
-          ></FontAwesome>
+          <FontAwesome name="plus" size={40} style={styles.plusBtnIcon} />
         </TouchableOpacity>
       </View>
     </View>
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
     color: Colors.grey,
     fontSize: 144,
     fontFamily: "Roboto-Medium",
-    top: 30,
+    top: Platform.OS === "android" ? 30 - (STATUS_BAR_HEIGHT ?? 0) : 30,
   },
   cigaretteCountText: {
     position: "absolute",
